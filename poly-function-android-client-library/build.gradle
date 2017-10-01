@@ -35,6 +35,7 @@ android {
     }
 
     dependencies {
+        compile 'com.squareup.retrofit2:retrofit:2.3.0'
         compile 'com.unidev.android.platform:core-utils:4.0.6'
         compile 'com.unidev.polydata:polydata-domain:2.1.0'
         compile 'com.fasterxml.jackson.core:jackson-databind:2.8.1'
