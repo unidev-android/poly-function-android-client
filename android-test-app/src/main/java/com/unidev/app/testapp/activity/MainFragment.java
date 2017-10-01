@@ -15,23 +15,18 @@
  */
 package com.unidev.app.testapp.activity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.unidev.app.testapp.R;
-import com.unidev.polydata.domain.BasicPoly;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.unidev.polyfunciton.FunctionRequest;
+import com.unidev.polyfunciton.FunctionResponse;
+import com.unidev.polyfunciton.PolyFunctionClient;
 
 
 public class MainFragment extends Fragment {
@@ -40,9 +35,6 @@ public class MainFragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main, container, false);
-
-        ListView listView = (ListView) view.findViewById(R.id.list);
-
 
         Button button = (Button) view.findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +45,13 @@ public class MainFragment extends Fragment {
 
 
                         try {
+                            Log.i("functionRequest", "Function request");
+                            PolyFunctionClient polyFunctionClient = new PolyFunctionClient();
+                            FunctionRequest functionRequest = new FunctionRequest();
+                            functionRequest.script("test-hello-world.groovy");
 
+                            FunctionResponse functionResponse = polyFunctionClient.invokeFunction(functionRequest);
+                            Log.i("functionResponse", functionResponse + "");
 
                         } catch (Throwable e) {
                             e.printStackTrace();
@@ -65,74 +63,6 @@ public class MainFragment extends Fragment {
             }
         });
 
-        Button button3 = (Button) view.findViewById(R.id.button3);
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new Thread() {
-                    public void run() {
-
-                    }
-                }.start();
-            }
-        });
-
-        final List<BasicPoly> recordList = new ArrayList<>();
-
-
-        listView.setAdapter(new BaseAdapter() {
-            @Override
-            public int getCount() {
-                return recordList.size();
-            }
-
-            @Override
-            public Object getItem(int position) {
-                return position;
-            }
-
-            @Override
-            public long getItemId(int position) {
-                return position;
-            }
-
-            @Override
-            public View getView(int position, View view, ViewGroup parent) {
-                if (view == null) {
-                    view = inflater.inflate(R.layout.list_item, null);
-                }
-
-                final BasicPoly poly = recordList.get(position);
-
-                TextView item = (TextView) view.findViewById(R.id.item);
-
-                item.setText(poly + "");
-
-                final Button button = (Button) view.findViewById(R.id.favs);
-
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        AlertDialog.Builder builder = new AlertDialog.Builder(MainFragment.this.getActivity());
-                        builder.setTitle("Poly record");
-                        builder.setMessage(poly + "");
-                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                            }
-                        });
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
-
-
-                    }
-                });
-
-                return view;
-            }
-        });
         return view;
     }
 
