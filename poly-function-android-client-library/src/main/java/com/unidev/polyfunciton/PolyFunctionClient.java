@@ -3,10 +3,14 @@ package com.unidev.polyfunciton;
 
 import com.unidev.core.okhttp.OkHttpUtils;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.jackson.JacksonConverterFactory;
 
 public class PolyFunctionClient {
 
@@ -19,7 +23,7 @@ public class PolyFunctionClient {
     private PolyFunctionService polyFunctionService;
 
     public PolyFunctionClient() {
-        this("http://function.api.universal-development.com/api/v1", REQUEST_TIMEOUT);
+        this("http://function.api.universal-development.com/api/v1/", REQUEST_TIMEOUT);
     }
 
     public PolyFunctionClient(String rootUrl, int requestTimeout) {
@@ -32,12 +36,23 @@ public class PolyFunctionClient {
         retrofit = new Retrofit.Builder()
                 .baseUrl(rootUrl)
                 .client(httpClient)
+                .addConverterFactory(JacksonConverterFactory.create())
                 .build();
         polyFunctionService = retrofit.create(PolyFunctionService.class);
     }
 
-    public FunctionResponse invokeFunction(FunctionRequest functionRequest) {
-        return polyFunctionService.function(functionRequest);
+    public FunctionResponse invokeFunction(FunctionRequest functionRequest) throws PolyFunctionException {
+        Call<FunctionResponse> call = polyFunctionService.function(functionRequest);
+        try {
+            Response<FunctionResponse> response = call.execute();
+            if (!response.isSuccessful()) {
+                throw new PolyFunctionException("Not successful function invocation");
+            }
+            return response.body();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new PolyFunctionException(e);
+        }
     }
 
 }

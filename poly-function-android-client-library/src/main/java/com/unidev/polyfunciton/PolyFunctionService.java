@@ -1,6 +1,8 @@
 package com.unidev.polyfunciton;
 
 
+import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 /**
@@ -9,5 +11,5 @@ import retrofit2.http.POST;
 public interface PolyFunctionService {
 
     @POST("function")
-    public FunctionResponse function(FunctionRequest functionRequest);
+    public Call<FunctionResponse> function(@Body FunctionRequest functionRequest);
 }
