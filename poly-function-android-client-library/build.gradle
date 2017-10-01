@@ -35,7 +35,6 @@ android {
     }
 
     dependencies {
-        compile project(':polydata-storage-common')
         compile 'com.unidev.android.platform:core-utils:4.0.6'
         compile 'com.unidev.polydata:polydata-domain:2.1.0'
         compile 'com.fasterxml.jackson.core:jackson-databind:2.8.1'

@@ -49,6 +49,5 @@ android {
 dependencies {
     compile 'com.unidev.android.platform:core-utils:4.0.6'
     compile 'com.unidev.android.platform:ui-utils:4.0.6'
-    //compile project(':polydata-embedded-storage-android-client-library')
-    compile project(':polydata-storage-android-client-library')
+    compile project(':poly-function-android-client-library')
 }
