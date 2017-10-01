@@ -16,10 +16,6 @@
 package com.unidev.app.testapp.core;
 
 import com.unidev.core.di.AppContext;
-import com.unidev.polydata.android.storage.client.PolyDataStorageClient;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * Application custom backend logic
@@ -32,61 +28,9 @@ public class Core {
         return AppContext.getInstance(INSTANCE_NAME, Core.class);
     }
 
-    public ExecutorService executorService = Executors.newFixedThreadPool(1);
-
-    public PolyDataStorageClient polyDataStorageClient;
-
-//    public PolyDataStorageClient polyHateoasClient;
-//
-//    List<BasicPoly> tags;
-//    List<BasicPoly> recordList;
 
     public void load() {
 
-        polyDataStorageClient = new PolyDataStorageClient("http://polydata2-storage.api.universal-development.com/api/v1");
-//        polyHateoasClient = new PolyDataStorageClient("http://polydata-storage.api.universal-development.com", "striptease");
-//        try {
-//            polyHateoasClient.fetchIndex();
-//            tags = polyHateoasClient.fetchTags();
-//
-//            recordList = polyHateoasClient.query(new PolyQuery());
-//
-//            Log.d("tags", tags + "");
-//            Log.d("recordList", recordList + "");
-//        } catch (PolyClientException e) {
-//            e.printStackTrace();
-//        }
-
-        // polyHateoasClient.fetchCurrentPage();
     }
-
-//    public List<BasicPoly> getTags() {
-//        return tags;
-//    }
-//
-//    public void setTags(List<BasicPoly> tags) {
-//        this.tags = tags;
-//    }
-//
-//    public List<BasicPoly> getRecordList() {
-//        return recordList;
-//    }
-//
-//    public void setRecordList(List<BasicPoly> recordList) {
-//        this.recordList = recordList;
-//    }
-//
-    //
-//    public FlatFileStorage currentPage() {
-//        return polyHateoasClient.fetchCurrentPage();
-//    }
-//
-//    public FlatFileStorage fetchPolyInfo(BasicPoly basicPoly) {
-//        return polyHateoasClient.fetchStorage(basicPoly.link());
-//    }
-
-    /*public FlatFileURLStorage flatFileURLStorage() {
-        return flatFileURLStorage;
-    }*/
 
 }

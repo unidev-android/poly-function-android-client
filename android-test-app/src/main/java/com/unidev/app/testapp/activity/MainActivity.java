@@ -23,25 +23,11 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.unidev.app.testapp.R;
 import com.unidev.app.testapp.core.InitializationOperation;
-import com.unidev.uiutils.AbstractActivity;
 import com.unidev.uiutils.AbstractToolbarActivity;
-import com.unidev.uiutils.UIUtils;
 
 public class MainActivity extends AbstractToolbarActivity {
 
     public static final String LOADING_TAG = "loadingTag";
-
-
-//    @Override
-//    protected boolean enableInfiniteLoading() {
-//        return false;
-//    }
-//
-//
-//    @Override
-//    public Fragment buildContentFragment() {
-//            return null;
-//    }
 
     @NonNull
     @Override

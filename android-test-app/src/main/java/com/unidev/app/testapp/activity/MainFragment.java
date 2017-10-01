@@ -19,7 +19,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,10 +28,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.unidev.app.testapp.R;
-import com.unidev.app.testapp.core.Core;
-import com.unidev.polydata.PolyClientException;
-import com.unidev.polydata.PolyQuery;
-import com.unidev.polydata.android.storage.client.PolyDataListResponse;
 import com.unidev.polydata.domain.BasicPoly;
 
 import java.util.ArrayList;
@@ -59,31 +54,12 @@ public class MainFragment extends Fragment {
 
                         try {
 
-                            PolyQuery polyQuery = new PolyQuery();
-                            polyQuery.setPage(10L);
-                            PolyDataListResponse comicsfun = Core.getInstance().polyDataStorageClient.queryPolys("comicsfun", polyQuery);
-                            Log.d("comicsfun", comicsfun + "");
 
-//                            String storage = "scenario-plot-generator";
-//                            PolyDataResponse fetchStorageInfo = Core.getInstance().polyDataStorageClient.fetchStorageInfo(storage);
-//                            Log.d("fetchStorageInfo", fetchStorageInfo.toString());
-//
-//                            PolyDataResponse poly = Core.getInstance().polyDataStorageClient.fetchPolyById(storage, "DRskJpJPCFt");
-//                            Log.d("poly", poly.toString());
-//
-//
-//                            PolyDataResponse fetchPolys = Core.getInstance().polyDataStorageClient.fetchPolys(storage, Arrays.asList("hNhmdocd", "FmeTRRkTef"));
-//                            Log.d("fetchPolys", fetchPolys.toString());
-                        } catch (PolyClientException e) {
+                        } catch (Throwable e) {
                             e.printStackTrace();
                         }
 
-//                        try {
-//                            Map<String, BasicPoly> stringBasicPolyMap = Core.getInstance().polyHateoasClient.fetchPolys(Arrays.asList("ixsbd", "qwe"));
-//                            Log.d("stringBasicPolyMap", stringBasicPolyMap + "");
-//                        } catch (PolyClientException e) {
-//                            e.printStackTrace();
-//                        }
+
                     }
                 }.start();
             }
@@ -95,16 +71,7 @@ public class MainFragment extends Fragment {
             public void onClick(View v) {
                 new Thread() {
                     public void run() {
-//                        try {
-//                            PolyQuery polyQuery = new PolyQuery();
-//                            polyQuery.setRandomOrder(true);
-//                            polyQuery.setItemPerPage(2L);
-//                            polyQuery.setPage(0L);
-//                            List<BasicPoly> randomList = Core.getInstance().polyHateoasClient.query(polyQuery);
-//                            Log.d("randomList", randomList + "");
-//                        } catch (PolyClientException e) {
-//                            e.printStackTrace();
-//                        }
+
                     }
                 }.start();
             }
