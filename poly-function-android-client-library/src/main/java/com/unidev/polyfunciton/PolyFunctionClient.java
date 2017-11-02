@@ -14,26 +14,22 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 public class PolyFunctionClient {
 
-    private String rootUrl;
-
+    public static final String DEFAULT_FUNCTION_DOMAIN = "http://function.api.universal-development.com/api/v1/";
     public static final Integer REQUEST_TIMEOUT = 30 * 1000;
 
-    private OkHttpClient httpClient;
-    private Retrofit retrofit;
     private PolyFunctionService polyFunctionService;
 
     public PolyFunctionClient() {
-        this("http://function.api.universal-development.com/api/v1/", REQUEST_TIMEOUT);
+        this(DEFAULT_FUNCTION_DOMAIN, REQUEST_TIMEOUT);
     }
 
     public PolyFunctionClient(String rootUrl, int requestTimeout) {
-        this.rootUrl = rootUrl;
-        httpClient = OkHttpUtils.fetchUnsafeOkHttpClient()
+        OkHttpClient httpClient = OkHttpUtils.fetchUnsafeOkHttpClient()
                 .connectTimeout(requestTimeout, TimeUnit.MILLISECONDS)
                 .writeTimeout(requestTimeout, TimeUnit.MILLISECONDS)
                 .readTimeout(requestTimeout, TimeUnit.MILLISECONDS)
                 .build();
-        retrofit = new Retrofit.Builder()
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(rootUrl)
                 .client(httpClient)
                 .addConverterFactory(JacksonConverterFactory.create())
