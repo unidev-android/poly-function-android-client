@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 android {
 
-    compileSdkVersion 24
+    compileSdkVersion 26
     buildToolsVersion '26.0.2'
 
     defaultConfig {
         minSdkVersion 9
-        targetSdkVersion 25
+        targetSdkVersion 26
     }
 
     buildTypes {
@@ -37,9 +37,9 @@ android {
     dependencies {
         compile 'com.squareup.retrofit2:retrofit:2.3.0'
         compile 'com.squareup.retrofit2:converter-jackson:2.3.0'
-        compile 'com.unidev.android.platform:core-utils:4.0.6'
+        compile 'com.unidev.android.platform:core-utils:4.0.7'
         compile 'com.unidev.polydata:polydata-domain:2.1.0'
-        compile 'com.fasterxml.jackson.core:jackson-databind:2.8.1'
+        compile 'com.fasterxml.jackson.core:jackson-databind:2.8.9'
     }
 
 }

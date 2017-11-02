@@ -9,21 +9,22 @@ buildscript {
     repositories {
         mavenCentral()
         jcenter()
+        google()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.android.tools.build:gradle:3.0.0'
     }
 }
 
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 25
+        targetSdkVersion 26
     }
 
     lintOptions {
@@ -47,7 +48,7 @@ android {
 }
 
 dependencies {
-    compile 'com.unidev.android.platform:core-utils:4.0.6'
-    compile 'com.unidev.android.platform:ui-utils:4.0.6'
+    compile 'com.unidev.android.platform:core-utils:4.0.7'
+    compile 'com.unidev.android.platform:ui-utils:4.0.7'
     compile project(':poly-function-android-client-library')
 }
