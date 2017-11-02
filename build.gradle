@@ -20,11 +20,5 @@ subprojects {
     apply from: 'http://dev.local/gradle/android/uploadArchives.groovy'
     apply from: 'http://dev.local/gradle/android/defaultRepositories.groovy'
 
-    repositories {
-        google()
-    }
-
-
-
 }
 

@@ -1,9 +1,8 @@
 package com.unidev.polyfunciton;
 
 /**
- * Created by binary256 on 10/1/17.
+ * Exception on execution during poly function execution.
  */
-
 public class PolyFunctionException extends Exception {
 
     public PolyFunctionException() {
