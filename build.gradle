@@ -3,9 +3,10 @@ buildscript {
         mavenCentral()
         mavenLocal()
         jcenter()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.android.tools.build:gradle:3.0.0'
     }
 }
 
@@ -19,7 +20,9 @@ subprojects {
     apply from: 'http://dev.local/gradle/android/uploadArchives.groovy'
     apply from: 'http://dev.local/gradle/android/defaultRepositories.groovy'
 
-
+    repositories {
+        google()
+    }
 
 
 
